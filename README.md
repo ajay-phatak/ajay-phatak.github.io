@@ -1,8 +1,8 @@
-# wizard944.github.io
+# ajay-phatak.github.io
 
 My public facing portfolio of projects (most of which are vibe coded these days).
 
-Live at: **https://wizard944.github.io** *(once GitHub Pages is enabled)*
+Live at: **https://ajay-phatak.github.io** *(once GitHub Pages is enabled)*
 
 ## Structure
 
@@ -44,6 +44,4 @@ Or tell Claude Code directly: *"Update my portfolio repo to reflect the current 
 
 GitHub Pages — Settings → Pages → Deploy from branch → `main` / `root`.
 
-Your portfolio will be live at: `https://wizard944.github.io`
-# Portfolio
-My public facing portfolio of projects (most of which are vibe coded these days)
+Your portfolio will be live at: `https://ajay-phatak.github.io`
