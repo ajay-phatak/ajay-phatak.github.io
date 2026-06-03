@@ -36,6 +36,7 @@
       --card-shadow-hover: 0 1px 0 rgba(255,255,255,0.04) inset, 0 12px 32px -12px rgba(0,0,0,0.7);
       --dot-stable:   #3ecf8e;
       --dot-progress: #d8b34a;
+      --dot-dev:      #ff8c42;
       --dot-mvp:      #5aa9e6;
       --dot-archived: #767c85;
       color-scheme: dark;
@@ -60,6 +61,7 @@
       --card-shadow-hover: 0 12px 30px -14px rgba(20,22,26,0.18), 0 2px 6px rgba(20,22,26,0.05);
       --dot-stable:   #1f8a5b;
       --dot-progress: #b88516;
+      --dot-dev:      #e0701a;
       --dot-mvp:      #2f6fc4;
       --dot-archived: #9a9ea4;
       color-scheme: light;
@@ -295,6 +297,7 @@
     .status .s-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
     .status-stable   .s-dot { background: var(--dot-stable); }
     .status-progress .s-dot { background: var(--dot-progress); }
+    .status-dev      .s-dot { background: var(--dot-dev); }
     .status-mvp      .s-dot { background: var(--dot-mvp); }
     .status-archived .s-dot { background: var(--dot-archived); }
 
@@ -353,7 +356,10 @@
     .project-card.card-dual > *:not(.card-stretch) {
       position: relative;
       z-index: 2;
+      pointer-events: none;
     }
+    /* Re-enable interaction only for the secondary repo link */
+    .project-card.card-dual .repo-link { pointer-events: auto; }
     .repo-link {
       pointer-events: auto;
       display: inline-flex;
@@ -480,7 +486,7 @@
           <a class="card-stretch" href="https://2026-election-tracker.vercel.app" target="_blank" rel="noopener" aria-label="2026 Election Tracker — open live site"></a>
           <div class="card-top">
             <div class="project-name">2026 Election Tracker</div>
-            <span class="status status-progress"><span class="s-dot"></span>In dev</span>
+            <span class="status status-dev"><span class="s-dot"></span>In dev</span>
           </div>
           <div class="project-desc">A dark-themed dashboard tracking the 2026 US Senate midterm battleground races &mdash; betting markets, polling averages, and approval at a glance.</div>
           <div class="project-foot">
@@ -504,7 +510,7 @@
           <div class="project-foot">
             <div class="project-tags mono">
               <span class="tag">Python</span>
-              <span class="tag">Data</span>
+              <span class="tag">Claude Skill</span>
             </div>
             <span class="card-cta">View<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </div>
@@ -519,7 +525,7 @@
           <div class="project-foot">
             <div class="project-tags mono">
               <span class="tag">Python</span>
-              <span class="tag">Video</span>
+              <span class="tag">Claude Skill</span>
             </div>
             <span class="card-cta">View<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </div>
