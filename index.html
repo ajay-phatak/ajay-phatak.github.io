@@ -107,18 +107,19 @@
     .brand-mark {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       font-size: 13px;
       font-weight: 500;
       color: var(--text-2);
       letter-spacing: 0;
     }
 
-    .brand-dot {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-soft);
+    .brand-icon {
+      width: 18px;
+      height: 18px;
+      display: block;
+      border-radius: 4px;
+      flex-shrink: 0;
     }
 
     .nav {
@@ -436,7 +437,7 @@
 
     <div class="topbar">
       <div class="brand-mark">
-        <span class="brand-dot"></span>
+        <img class="brand-icon" src="favicon.svg" alt="" width="18" height="18" />
         <span class="mono">ajay-phatak</span>
       </div>
       <nav class="nav">
@@ -464,7 +465,7 @@
           LinkedIn
           <span class="arrow">&#8599;</span>
         </a>
-        <a class="pill-link" href="/cdn-cgi/l/email-protection#88e9e2e9f1a6f8e0e9fce9e3bac8efe5e9e1e4a6ebe7e5">
+        <a class="pill-link" id="email-link" href="#" data-cfemail="88e9e2e9f1a6f8e0e9fce9e3bac8efe5e9e1e4a6ebe7e5">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
           Email
         </a>
@@ -557,7 +558,7 @@
 
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     (function () {
       var root = document.documentElement;
       var KEY = 'ajay-portfolio-theme';
@@ -584,6 +585,17 @@
       var d = new Date();
       document.getElementById('last-updated').textContent =
         d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+      // Decode the email link on load — keeps the address out of the raw HTML
+      // so spam scrapers don't harvest it (first hex byte is the XOR key).
+      var mail = document.getElementById('email-link');
+      if (mail && mail.dataset.cfemail) {
+        var enc = mail.dataset.cfemail, key = parseInt(enc.substr(0, 2), 16), addr = '';
+        for (var i = 2; i < enc.length; i += 2) {
+          addr += String.fromCharCode(parseInt(enc.substr(i, 2), 16) ^ key);
+        }
+        mail.setAttribute('href', 'mailto:' + addr);
+      }
 
       // Staggered entrance — driven by JS so a frozen / background load can never
       // leave content stuck at opacity 0 (resting state is visible by default).
